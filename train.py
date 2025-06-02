@@ -23,8 +23,8 @@ def train_gan(config):
     os.makedirs(os.path.join(config.output_dir, 'checkpoints'), exist_ok=True)
     
     # Create models
-    netG = Generator(nz=config.nz, ngf=config.ngf, nc=3).to(device)
-    netD = Discriminator(nc=3, ndf=config.ndf).to(device)
+    netG = Generator(nz=config.nz, ngf=config.ngf, nc=3, img_size=config.image_size).to(device)
+    netD = Discriminator(nc=3, ndf=config.ndf, img_size=config.image_size).to(device)
     
     # Initialize weights
     netG.apply(weights_init)
